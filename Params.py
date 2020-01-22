@@ -37,29 +37,26 @@ elif DATASET == 'foursquare':
 LOAD_MODEL = None
 TRAIN_FILE = 'Datasets/' + DATASET + '/mats/sparseMat_'+str(RATE)+'_train'
 TEST_FILE = 'Datasets/' + DATASET + '/mats/sparseMat_'+str(RATE)+'_test'
-
-# True for ml1m, false for others
-MOVIE_BASED = True#True#False
+CV_FILE = 'Datasets/' + DATASET + '/mats/sparseMat_'+str(RATE)+'_cv'
 
 # Model Parameters
-EPOCH = 120
-LR = 2e-3#2e-3#2e-4#1e-3
-DECAY = 0.96
+# Param for different datasets are listed in the order of ML-1M, ML-10M, Netflix, Foursquare.
+MOVIE_BASED = True#True#False#False#False
+LR = 2e-3#2e-3#2e-4#2e-4#1e-3
 BATCH_SIZE = 32#32#128#512#128
+REG_WEIGHT = 1e-1#1e-1#1e-2#5e-3#5e-2
+ATT_DIM = 64#64#128#128#64
+
+EPOCH = 120
+DECAY = 0.96
+CUT_ORDERING = True
+LAT_DIM = 512
+ATTENTION_HEAD = 8
+MULT =16
+SAVE_PATH = 'tem'
 if MOVIE_BASED:
 	DECAY_STEP = MOVIE_NUM // BATCH_SIZE
 else:
 	DECAY_STEP = USER_NUM // BATCH_SIZE
 
-SAVE_PATH = 'tem'
 
-REG_WEIGHT = 1e-1#1e-1#1e-2#5e-3#5e-2
-SIGMA = 1
-
-CUT_ORDERING = True
-
-LAT_DIM = 512
-ATT_DIM = 64#64#128
-
-ATTENTION_HEAD = 8
-MULT =16
