@@ -1,5 +1,5 @@
-# T-MIDN
-Code for T-MIDN
+# MDN
+Code for MDN
 #### Datasets
 Please unzip the rar files in ``Datasets\datasetName\mats`` to get large datasets (ML-10M, Netflix, Foursquare) first .
 #### Model Training
